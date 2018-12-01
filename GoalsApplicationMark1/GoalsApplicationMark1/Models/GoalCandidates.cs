@@ -8,8 +8,7 @@ namespace GoalsApplicationMark1.Models
 {
     public class GoalCandidates : BaseEntity
     {
-        [Required]
-        public long Id { get; set; }
+        
 
         [Required]
         public string Candidate { get; set; }
@@ -22,5 +21,8 @@ namespace GoalsApplicationMark1.Models
         public long EpicId { get; set; }
 
         public long TaskId { get; set; }
+
+        [Required]
+        public long Id { get; set; }
     }
 }

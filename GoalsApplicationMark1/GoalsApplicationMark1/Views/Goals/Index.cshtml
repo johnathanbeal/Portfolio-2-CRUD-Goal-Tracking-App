@@ -1,0 +1,76 @@
+﻿@model IEnumerable<GoalsApplicationMark1.Models.Goals>
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Goal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ranking)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeliverableDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsSpecific)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsMeasureable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsAchieveable)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsRelevant)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsTimebound)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Goal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeliverableDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsSpecific)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsMeasureable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsAchieveable)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsTimebound)
+        </td>
+        <td>
+            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+            <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure wants to delete?');">Delete</a>
+        </td>
+    </tr>
+    }
+
+
+</table>

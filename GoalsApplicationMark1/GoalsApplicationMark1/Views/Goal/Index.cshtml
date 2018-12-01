@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GoalsApplicationMark1.Models.Goals>
+﻿@model IEnumerable<GoalsApplicationMark1.Models.Goal>
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 @{
@@ -13,7 +13,7 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Goal)
+            @Html.DisplayNameFor(model => model.GoalName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Description)
@@ -45,7 +45,7 @@
     {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.Goal)
+            @Html.DisplayFor(modelItem => item.GoalName)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)

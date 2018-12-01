@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Models
 {
-    public class GoalCandidates : BaseEntity
+    public class GoalCandidate : BaseEntity
     {
         
 

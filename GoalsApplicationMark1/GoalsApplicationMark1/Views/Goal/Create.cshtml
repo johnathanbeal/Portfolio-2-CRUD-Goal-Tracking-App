@@ -1,4 +1,4 @@
-﻿@model GoalsApplicationMark1.Models.Goal
+﻿@model GoalsApplicationMark1.Models.GoalEntity
 
 @{
     ViewData["Title"] = "Create";
@@ -12,10 +12,10 @@
         <hr />
         <div asp-validation-summary="ModelOnly" class="text/danger"></div>
         <div class="form-group">
-            <label asp-for="GoalName" class="col-md-2 control-label"></label>
+            <label asp-for="Goal" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="GoalName" class="form-control" />
-                <span asp-validation-for="GoalName" class="text-danger" />
+                <input asp-for="Goal" class="form-control" />
+                <span asp-validation-for="Goal" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

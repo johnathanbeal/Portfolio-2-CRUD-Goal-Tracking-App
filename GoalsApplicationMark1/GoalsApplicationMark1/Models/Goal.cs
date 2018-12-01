@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Models
 {
-    public class Goal : BaseEntity
+    public class GoalEntity : BaseEntity
     {
         [Key]
         public long Id { get; set; }
@@ -16,7 +16,7 @@ namespace GoalsApplicationMark1.Models
         public long GoalCandidateId { get; set; }
 
         [Required]
-        public string GoalName { get; set; }
+        public string Goal { get; set; }
 
         [Required]
         public string Description { get; set; }

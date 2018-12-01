@@ -30,7 +30,7 @@ namespace GoalsApplicationMark1.Controllers
 
         // POST: Goal/Create
         [HttpPost]
-        public IActionResult Create(Goal goal)
+        public IActionResult Create(GoalEntity goal)
         {
             var errors = ModelState
             .Where(x => x.Value.Errors.Count > 0)
@@ -54,7 +54,7 @@ namespace GoalsApplicationMark1.Controllers
             {
                 return NotFound();
             }
-            Goal obj = goalRepository.FindByID(id.Value);
+            GoalEntity obj = goalRepository.FindByID(id.Value);
             if (obj == null)
             {
                 return NotFound();
@@ -64,7 +64,7 @@ namespace GoalsApplicationMark1.Controllers
 
         // POST: /Goal/Edit
         [HttpPost]
-        public IActionResult Edit(Goal obj)
+        public IActionResult Edit(GoalEntity obj)
         {
             if (ModelState.IsValid)
             {

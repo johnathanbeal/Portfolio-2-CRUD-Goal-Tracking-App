@@ -11,7 +11,7 @@ using Dapper;
 
 namespace GoalsApplicationMark1.Repository
 {
-    public class GoalRepository : IRepository<Goal>
+    public class GoalRepository : IRepository<GoalEntity>
     {
         private string connectionString;
 
@@ -27,30 +27,30 @@ namespace GoalsApplicationMark1.Repository
                 return new NpgsqlConnection(connectionString);
             }
         }
-        public void Add(Goal goal)
+        public void Add(GoalEntity goal)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO goals (goalName, description, ranking, deliverabledate, isspecific, ismeasureable, isachieveable, isrelevant, istimebound) VALUES (@goalName, @description, @ranking, @deliverabledate, @isspecific, @ismeasureable, @isachieveable, @isrelevant, @istimebound)", goal);
+                dbConnection.Execute("INSERT INTO goals (goal, description, ranking, deliverabledate, isspecific, ismeasureable, isachieveable, isrelevant, istimebound) VALUES (@goal, @description, @ranking, @deliverabledate, @isspecific, @ismeasureable, @isachieveable, @isrelevant, @istimebound)", goal);
             }
         }
 
-        public IEnumerable<Goal> FindAll()
+        public IEnumerable<GoalEntity> FindAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Goal>("SELECT * FROM goals");
+                return dbConnection.Query<GoalEntity>("SELECT * FROM goals");
             }
         }
 
-        public Goal FindByID(int id)
+        public GoalEntity FindByID(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Goal>("DELETE FROM goals WHERE Id=@Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<GoalEntity>("DELETE FROM goals WHERE Id=@Id", new { Id = id }).FirstOrDefault();
             }
         }
 
@@ -63,12 +63,12 @@ namespace GoalsApplicationMark1.Repository
             }
         }
 
-        public void Update(Goal goal)
+        public void Update(GoalEntity goal)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Query("UPDATE goals SET goal = @GoalName, description = @Description, ranking = @Ranking, deliverabledate = @Deliverabledate, isspecific = @Isspecific, ismeasureable = @Ismeasureable, isachieveable = @Isachieveable, isrelevant = @Isrelevant, istimebound = @Istimebound", goal);
+                dbConnection.Query("UPDATE goals SET goal = @Goal, description = @Description, ranking = @Ranking, deliverabledate = @Deliverabledate, isspecific = @Isspecific, ismeasureable = @Ismeasureable, isachieveable = @Isachieveable, isrelevant = @Isrelevant, istimebound = @Istimebound", goal);
             }
         }
     }

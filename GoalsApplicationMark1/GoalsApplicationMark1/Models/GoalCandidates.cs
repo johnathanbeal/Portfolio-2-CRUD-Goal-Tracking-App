@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Models
 {
-    public class GoalCandidate : BaseEntity
+    public class GoalCandidates : BaseEntity
     {
-        
-
         [Required]
-        public string Candidate { get; set; }
+        public string GoalCandidate { get; set; }
 
         [Required]
         public string Description { get; set; }
+
+        public int Importance { get; set; }
 
         public long GoalId { get; set; }
 

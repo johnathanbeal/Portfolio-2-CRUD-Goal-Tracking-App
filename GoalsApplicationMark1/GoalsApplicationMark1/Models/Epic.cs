@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Models
 {
-    public class Epic : BaseEntity
+    public class Epics : BaseEntity
     {
         [Required]
         public long Id { get; set; }
         [Required]
-        public string EpicName { get; set; }
+        public string Epic { get; set; }
         [Required]
         public string Description { get; set; }
 

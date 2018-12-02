@@ -11,7 +11,7 @@ using Dapper;
 
 namespace GoalsApplicationMark1.Repository
 {
-    public class GoalRepository : IRepository<GoalEntity>
+    public class GoalRepository : IRepository<Goals>
     {
         private string connectionString;
 
@@ -27,7 +27,7 @@ namespace GoalsApplicationMark1.Repository
                 return new NpgsqlConnection(connectionString);
             }
         }
-        public void Add(GoalEntity goal)
+        public void Add(Goals goal)
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -36,21 +36,21 @@ namespace GoalsApplicationMark1.Repository
             }
         }
 
-        public IEnumerable<GoalEntity> FindAll()
+        public IEnumerable<Goals> FindAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<GoalEntity>("SELECT * FROM goals");
+                return dbConnection.Query<Goals>("SELECT * FROM goals");
             }
         }
 
-        public GoalEntity FindByID(int id)
+        public Goals FindByID(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<GoalEntity>("DELETE FROM goals WHERE Id=@Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<Goals>("DELETE FROM goals WHERE Id=@Id", new { Id = id }).FirstOrDefault();
             }
         }
 
@@ -63,7 +63,7 @@ namespace GoalsApplicationMark1.Repository
             }
         }
 
-        public void Update(GoalEntity goal)
+        public void Update(Goals goal)
         {
             using (IDbConnection dbConnection = Connection)
             {

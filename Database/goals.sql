@@ -5,7 +5,7 @@
 -- Dumped from database version 11.1
 -- Dumped by pg_dump version 11.1
 
--- Started on 2018-11-28 19:11:18
+-- Started on 2018-12-02 06:25:54
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -23,10 +23,10 @@ SET default_with_oids = false;
 
 --
 -- TOC entry 197 (class 1259 OID 16406)
--- Name: epic; Type: TABLE; Schema: public; Owner: postgres
+-- Name: epics; Type: TABLE; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.epic (
+CREATE TABLE public.epics (
     id integer,
     epic character varying,
     description character varying,
@@ -35,7 +35,7 @@ CREATE TABLE public.epic (
 );
 
 
-ALTER TABLE public.epic OWNER TO postgres;
+ALTER TABLE public.epics OWNER TO postgres;
 
 --
 -- TOC entry 196 (class 1259 OID 16400)
@@ -43,10 +43,9 @@ ALTER TABLE public.epic OWNER TO postgres;
 --
 
 CREATE TABLE public.goalcandidates (
-    goalcandidate integer,
+    goalcandidate character varying,
     description character varying,
     importance integer,
-    deliverabledate date,
     goalid integer,
     epicid integer,
     taskid integer,
@@ -134,10 +133,10 @@ ALTER TABLE ONLY public.goals ALTER COLUMN id SET DEFAULT nextval('public.goals_
 --
 -- TOC entry 2824 (class 0 OID 16406)
 -- Dependencies: 197
--- Data for Name: epic; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: epics; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.epic (id, epic, description, category, subcategory) FROM stdin;
+COPY public.epics (id, epic, description, category, subcategory) FROM stdin;
 \.
 
 
@@ -147,7 +146,7 @@ COPY public.epic (id, epic, description, category, subcategory) FROM stdin;
 -- Data for Name: goalcandidates; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.goalcandidates (goalcandidate, description, importance, deliverabledate, goalid, epicid, taskid, id) FROM stdin;
+COPY public.goalcandidates (goalcandidate, description, importance, goalid, epicid, taskid, id) FROM stdin;
 \.
 
 
@@ -180,7 +179,7 @@ COPY public.tasks (id, task, description, rank, deadline, category, subcategory,
 SELECT pg_catalog.setval('public.goals_id_seq', 1, false);
 
 
--- Completed on 2018-11-28 19:11:19
+-- Completed on 2018-12-02 06:25:55
 
 --
 -- PostgreSQL database dump complete

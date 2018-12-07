@@ -5,7 +5,7 @@
 -- Dumped from database version 11.1
 -- Dumped by pg_dump version 11.1
 
--- Started on 2018-12-02 06:25:54
+-- Started on 2018-12-06 19:52:13
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -157,6 +157,7 @@ COPY public.goalcandidates (goalcandidate, description, importance, goalid, epic
 --
 
 COPY public.goals (id, epicid, goalcandidateid, goal, description, ranking, deliverabledate, isspecific, ismeasureable, isachieveable, isrelevant, istimebound) FROM stdin;
+1	\N	\N	Earn 2nd Degree Black-Belt	earn 2nd degree black belt at Reston Jujitsu	1	2020-10-10	t	t	t	t	t
 \.
 
 
@@ -176,10 +177,10 @@ COPY public.tasks (id, task, description, rank, deadline, category, subcategory,
 -- Name: goals_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.goals_id_seq', 1, false);
+SELECT pg_catalog.setval('public.goals_id_seq', 1, true);
 
 
--- Completed on 2018-12-02 06:25:55
+-- Completed on 2018-12-06 19:52:13
 
 --
 -- PostgreSQL database dump complete

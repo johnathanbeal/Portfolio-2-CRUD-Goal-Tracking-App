@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Controllers
 {
-    public class GoalController : Controller
+    public class GoalsController : Controller
     {
         private readonly GoalRepository goalRepository;
 
-        public GoalController(IConfiguration configuration)
+        public GoalsController(IConfiguration configuration)
         {
             goalRepository = new GoalRepository(configuration);
         }
@@ -28,10 +28,12 @@ namespace GoalsApplicationMark1.Controllers
             return View();
         }
 
-        // POST: Goal/Create
+        // POST: Goals/Create
         [HttpPost]
-        public IActionResult Create(Goals goal)
+        public IActionResult Create(Goals goals)
         {
+            var obj = goals.ToString();
+
             var errors = ModelState
             .Where(x => x.Value.Errors.Count > 0)
             .Select(x => new { x.Key, x.Value.Errors })
@@ -41,10 +43,10 @@ namespace GoalsApplicationMark1.Controllers
 
             if (ModelState.IsValid)
             {
-                goalRepository.Add(goal);
+                goalRepository.Add(goals);
                 return RedirectToAction("Index");
             }
-            return View(goal);
+            return View(goals);
         }
 
         // GET: /Goal/Edit/1

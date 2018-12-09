@@ -11,7 +11,7 @@ using Dapper;
 
 namespace GoalsApplicationMark1.Repository
 {
-    public class GoalRepository : IRepository<Goals>
+    public class GoalRepository : IRepository<GoalEntity>
     {
         private string connectionString;
 
@@ -27,7 +27,7 @@ namespace GoalsApplicationMark1.Repository
                 return new NpgsqlConnection(connectionString);
             }
         }
-        public void Add(Goals goal)
+        public void Add(GoalEntity goal)
         {
             using (IDbConnection dbConnection = Connection)
             {
@@ -36,21 +36,21 @@ namespace GoalsApplicationMark1.Repository
             }
         }
 
-        public IEnumerable<Goals> FindAll()
+        public IEnumerable<GoalEntity> FindAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Goals>("SELECT * FROM goals");
+                return dbConnection.Query<GoalEntity>("SELECT * FROM goals");
             }
         }
 
-        public Goals FindByID(int id)
+        public GoalEntity FindByID(int id)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Goals>("DELETE FROM goals WHERE Id=@Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<GoalEntity>("SELECT * FROM goals WHERE Id=@Id", new { Id = id }).FirstOrDefault();
             }
         }
 
@@ -63,12 +63,12 @@ namespace GoalsApplicationMark1.Repository
             }
         }
 
-        public void Update(Goals goal)
+        public void Update(GoalEntity goal)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Query("UPDATE goals SET goal = @Goal, description = @Description, ranking = @Ranking, deliverabledate = @Deliverabledate, isspecific = @Isspecific, ismeasureable = @Ismeasureable, isachieveable = @Isachieveable, isrelevant = @Isrelevant, istimebound = @Istimebound", goal);
+                dbConnection.Query("UPDATE goals SET goal = @Goal, description = @Description, ranking = @Ranking, deliverabledate = @Deliverabledate, isspecific = @Isspecific, ismeasureable = @Ismeasureable, isachieveable = @Isachieveable, isrelevant = @Isrelevant, istimebound = @Istimebound WHERE id = @Id", goal);
             }
         }
     }

@@ -1,20 +1,20 @@
 ﻿using GoalsApplicationMark1.Models;
-using Npgsql;
-using Dapper;
 using Microsoft.Extensions.Configuration;
-using System.Data;
-using Dapper;
+using Npgsql;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using Dapper;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Repository
 {
-    public class TaskRepository : IRepository<Tasks>
+    public class GoalCandidatesRepository : IRepository<GoalCandidates>
     {
         private string connectionString;
-        public TaskRepository(IConfiguration configuration)
+
+        public GoalCandidatesRepository(IConfiguration configuration)
         {
             connectionString = configuration.GetValue<string>("DBInfo:ConnectionString");
         }
@@ -26,30 +26,31 @@ namespace GoalsApplicationMark1.Repository
                 return new NpgsqlConnection(connectionString);
             }
         }
-        public void Add(Tasks task)
+
+        public void Add(GoalCandidates goalCandidate)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO tasks (task, description, rank, deadline, category, subcategory) VALUES (@task, @description, @rank, @deadline, @category, @subcategory)", task);
-            }
-        }
-        
-        public IEnumerable<Tasks> FindAll()
-        {
-            using (IDbConnection dbConnection = Connection)
-            {
-                dbConnection.Open();
-                return dbConnection.Query<Tasks>("SELECT * FROM tasks");
+                dbConnection.Execute("INSERT INTO goalCandidates (goalcandidate,description, importance) VALUES (@goalCanidates, @description, @importance", goalCandidate);
             }
         }
 
-        public Tasks FindByID(int id)
+        public IEnumerable<GoalCandidates> FindAll()
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                return dbConnection.Query<Tasks>("SELECT * tasks WHERE Id=@Id", new { Id = id }).FirstOrDefault();
+                return dbConnection.Query<GoalCandidates>("SELECT * FROM goalcandidates");
+            }
+        }
+
+        public GoalCandidates FindByID(int id)
+        {
+            using (IDbConnection dbConnection = Connection)
+            {
+                dbConnection.Open();
+                return dbConnection.Query<GoalCandidates>("SELECT FROM goalcandidates WHERE Id=@Id", new { Id = id }).FirstOrDefault();
             }
         }
 
@@ -58,17 +59,18 @@ namespace GoalsApplicationMark1.Repository
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("DELETE From tasks where Id=@id", new { Id = id });
+                dbConnection.Execute("DELETE FROM goalcandidates where Id=@Id", new { Id = id });
             }
         }
 
-        public void Update(Tasks task)
+        public void Update(GoalCandidates goalCandidate)
         {
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Query("UPDATE tasks SET task = task = @Task, description = @Description, rank = @Rank, deadline = @Deadline, category = @Category, subcategory = @Subcategory", task);
+                dbConnection.Query("UPDATE goalcandidates SET goalCandidate = @GoalCandidate, description = @Description, importance = @Importance", goalCandidate);
             }
+            
         }
     }
 }

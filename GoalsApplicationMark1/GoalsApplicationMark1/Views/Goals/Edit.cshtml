@@ -1,4 +1,4 @@
-﻿@model GoalsApplicationMark1.Models.Goals
+﻿@model GoalsApplicationMark1.Models.GoalEntity
 
 @{
     ViewData["Title"] = "Edit";
@@ -22,48 +22,68 @@
             <label asp-for="Description" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Description" class="text-danger" />
+                <span asp-validation-for="Description" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Ranking" class="text-danger" />
+            <label asp-for="Ranking" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Ranking" class="text-danger" />
+                <span asp-validation-for="Ranking" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="DeliverableDate" class="text-danger" />
+            <label asp-for="DeliverableDate" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="DeliverableDate" class="text-danger" />
+                <span asp-validation-for="DeliverableDate" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="IsSpecific" class="text-danger" />
+            <label asp-for="IsSpecific" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="IsSpecific" class="text-danger" />
+                <span asp-validation-for="IsSpecific" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="IsMeasureable" class="text-danger" />
+            <label asp-for="IsMeasureable" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="IsMeasureable" class="text-danger" />
+                <span asp-validation-for="IsMeasureable" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="IsAchieveable" class="text-danger" />
+            <label asp-for="IsAchieveable" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="IsAchieveable" class="text-danger" />
+                <span asp-validation-for="IsAchieveable" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="IsRelevant" class="text-danger" />
+            <label asp-for="IsRelevant" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="IsRelevant" class="text-danger" />
+                <span asp-validation-for="IsRelevant" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="IsTimebound" class="text-danger" />
+            <label asp-for="IsTimebound" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="IsTimebound" class="text-danger" />
+                <span asp-validation-for="IsTimebound" class="text/danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="GoalType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="GoalType" class="text-danger" />
+                <span asp-validation-for="GoalType" class="text/danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
             </div>
         </div>
     </div>

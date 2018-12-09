@@ -1,27 +1,26 @@
-﻿using GoalsApplicationMark1.Repository;
+﻿using GoalsApplicationMark1.Models;
+using GoalsApplicationMark1.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GoalsApplicationMark1.Models;
-using GoalsApplicationMark1.Repository;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace GoalsApplicationMark1.Controllers
 {
-    public class GoalCandidateController : Controller
+    public class GoalsController : Controller
     {
-        private readonly GoalCandidatesRepository goalCandidatesRepository;
+        private readonly GoalRepository goalRepository;
 
-        public GoalCandidateController(IConfiguration configuration)
+        public GoalsController(IConfiguration configuration)
         {
-            goalCandidatesRepository = new GoalCandidatesRepository(configuration);
+            goalRepository = new GoalRepository(configuration);
         }
 
         public IActionResult Index()
         {
-            return View(goalCandidatesRepository.FindAll());
+            return View(goalRepository.FindAll());
         }
 
         public IActionResult Create()
@@ -29,16 +28,23 @@ namespace GoalsApplicationMark1.Controllers
             return View();
         }
 
-        // POST : GoalCandidate/Create
+        // POST: Goal/Create
         [HttpPost]
-        public IActionResult Create(GoalCandidates goalCandidate)
+        public IActionResult Create(GoalEntity goals)
         {
+            var errors = ModelState
+            .Where(x => x.Value.Errors.Count > 0)
+            .Select(x => new { x.Key, x.Value.Errors })
+            .ToArray();
+
+            var findErrors = ModelState.Values.SelectMany(v => v.Errors);
+
             if (ModelState.IsValid)
             {
-                goalCandidatesRepository.Add(goalCandidate);
+                goalRepository.Add(goals);
                 return RedirectToAction("Index");
             }
-            return View(goalCandidate);
+            return View(goals);
         }
 
         // GET: /Goal/Edit/1
@@ -48,7 +54,7 @@ namespace GoalsApplicationMark1.Controllers
             {
                 return NotFound();
             }
-            GoalCandidates obj = goalCandidatesRepository.FindByID(id.Value);
+            GoalEntity obj = goalRepository.FindByID(id.Value);
             if (obj == null)
             {
                 return NotFound();
@@ -58,24 +64,24 @@ namespace GoalsApplicationMark1.Controllers
 
         // POST: /Goal/Edit
         [HttpPost]
-        public IActionResult Edit(GoalCandidates obj)
+        public IActionResult Edit(GoalEntity obj)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                goalCandidatesRepository.Update(obj);
+                goalRepository.Update(obj);
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-        // GET:/Goal/Delete/1
+        // Get:/Goal/Delete/1
         public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            goalCandidatesRepository.Remove(id.Value);
+            goalRepository.Remove(id.Value);
             return RedirectToAction("Index");
         }
     }

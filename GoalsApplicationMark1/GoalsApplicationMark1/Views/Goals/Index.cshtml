@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GoalsApplicationMark1.Models.Goals>
+﻿@model IEnumerable<GoalsApplicationMark1.Models.GoalEntity>
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 @{
@@ -12,6 +12,9 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Goal)
         </th>
@@ -39,16 +42,28 @@
         <th>
             @Html.DisplayNameFor(model => model.IsTimebound)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GoalType)
+        </th>
+        <th>
+            Options
+        </th>
     </tr>
 
-    @foreach (var item in Model)
+    @foreach (var item in Model.OrderBy(g => g.Ranking))
     {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.Goal)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ranking)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.DeliverableDate)
@@ -63,11 +78,17 @@
             @Html.DisplayFor(modelItem => item.IsAchieveable)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.IsRelevant)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.IsTimebound)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.GoalType)
+        </td>
+        <td>
             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure wants to delete?');">Delete</a>
+            <a asp-action="Delete" asp-route-id="@item.Id" onclick="return confirm('Are you sure you want to delete?');">Delete Goal</a>
         </td>
     </tr>
     }

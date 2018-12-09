@@ -1,27 +1,26 @@
-﻿using GoalsApplicationMark1.Repository;
+﻿using GoalsApplicationMark1.Models;
+using GoalsApplicationMark1.Repository;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using GoalsApplicationMark1.Models;
-using GoalsApplicationMark1.Repository;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 
 namespace GoalsApplicationMark1.Controllers
 {
-    public class GoalCandidateController : Controller
+    public class EpicsController : Controller
     {
-        private readonly GoalCandidatesRepository goalCandidatesRepository;
+        private readonly EpicRepository epicRepository;
 
-        public GoalCandidateController(IConfiguration configuration)
+        public EpicsController(IConfiguration configuration)
         {
-            goalCandidatesRepository = new GoalCandidatesRepository(configuration);
+            epicRepository = new EpicRepository(configuration);
         }
 
         public IActionResult Index()
         {
-            return View(goalCandidatesRepository.FindAll());
+            return View(epicRepository.FindAll());
         }
 
         public IActionResult Create()
@@ -29,26 +28,27 @@ namespace GoalsApplicationMark1.Controllers
             return View();
         }
 
-        // POST : GoalCandidate/Create
+        // POST: Epic/Create
         [HttpPost]
-        public IActionResult Create(GoalCandidates goalCandidate)
+
+        public IActionResult Create(Epics epics)
         {
             if (ModelState.IsValid)
             {
-                goalCandidatesRepository.Add(goalCandidate);
+                epicRepository.Add(epics);
                 return RedirectToAction("Index");
             }
-            return View(goalCandidate);
+            return View(epics);
         }
 
-        // GET: /Goal/Edit/1
+        // GET: /Epic/Edit/1
         public IActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            GoalCandidates obj = goalCandidatesRepository.FindByID(id.Value);
+            Epics obj = epicRepository.FindByID(id.Value);
             if (obj == null)
             {
                 return NotFound();
@@ -58,24 +58,24 @@ namespace GoalsApplicationMark1.Controllers
 
         // POST: /Goal/Edit
         [HttpPost]
-        public IActionResult Edit(GoalCandidates obj)
+        public IActionResult Edit(Epics obj)
         {
             if(ModelState.IsValid)
             {
-                goalCandidatesRepository.Update(obj);
+                epicRepository.Update(obj);
                 return RedirectToAction("Index");
             }
             return View(obj);
         }
 
-        // GET:/Goal/Delete/1
+        //  Get:/Goal/Delete/1
         public IActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
-            goalCandidatesRepository.Remove(id.Value);
+            epicRepository.Remove(id.Value);
             return RedirectToAction("Index");
         }
     }

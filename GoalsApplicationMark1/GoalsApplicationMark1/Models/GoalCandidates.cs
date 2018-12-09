@@ -8,13 +8,13 @@ namespace GoalsApplicationMark1.Models
 {
     public class GoalCandidates : BaseEntity
     {
+        
+
         [Required]
-        public string GoalCandidate { get; set; }
+        public string Candidate { get; set; }
 
         [Required]
         public string Description { get; set; }
-
-        public int Importance { get; set; }
 
         public long GoalId { get; set; }
 

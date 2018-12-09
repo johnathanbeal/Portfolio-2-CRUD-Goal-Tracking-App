@@ -1,4 +1,5 @@
-﻿@model GoalsApplicationMark1.Models.Goals
+﻿@model GoalsApplicationMark1.Models.GoalEntity
+@using GoalsApplicationMark1.Common;
 
 @{
     ViewData["Title"] = "Create";
@@ -15,21 +16,21 @@
             <label asp-for="Goal" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Goal" class="form-control" />
-                <span asp-validation-for="Goal" class="text-danger" required="required"/>
+                <span asp-validation-for="Goal" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
             <label asp-for="Description" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text/danger" required="required"/>
+                <span asp-validation-for="Description" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
             <label asp-for="Ranking" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Ranking" class="form-control" />
-                <span asp-validation-for="Ranking" class="text/danger"/>
+                <span asp-validation-for="Ranking" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
@@ -72,6 +73,22 @@
             <div class="col-md-10">
                 <input asp-for="IsTimebound" class="form-control" />
                 <span asp-validation-for="IsTimebound" class="text/danger" />
+            </div>
+        </div>
+        @*<div class="form-group">
+            <label asp-for="GoalType" class="col-md-2 control-label">Epic, Task, Goal, GoalCandidate</label>
+            <div class="col-md-10">
+                <input asp-for="GoalType" class="form-control" />
+                <span asp-validation-for="GoalType" class="text/danger" />
+            </div>
+        </div>*@
+        <div class="form-group">
+            <label asp-for="GoalType" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="GoalType" asp-items="Html.GetEnumSelectList<GoalTypes>()">
+                    <option selected="selected" value="">Please select</option>
+                </select>
+                <span asp-validation-for="GoalType" class="text-danger" />
             </div>
         </div>
         <div class="form-group">

@@ -5,6 +5,42 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Views\Epics\**" />
+    <Compile Remove="Views\GoalCandidates\**" />
+    <Compile Remove="Views\Tasks\**" />
+    <Content Remove="Views\Epics\**" />
+    <Content Remove="Views\GoalCandidates\**" />
+    <Content Remove="Views\Tasks\**" />
+    <EmbeddedResource Remove="Views\Epics\**" />
+    <EmbeddedResource Remove="Views\GoalCandidates\**" />
+    <EmbeddedResource Remove="Views\Tasks\**" />
+    <None Remove="Views\Epics\**" />
+    <None Remove="Views\GoalCandidates\**" />
+    <None Remove="Views\Tasks\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Controllers\EpicController.cs" />
+    <Compile Remove="Controllers\GoalCandidateController.cs" />
+    <Compile Remove="Controllers\TaskController.cs" />
+    <Compile Remove="Models\Epics.cs" />
+    <Compile Remove="Models\GoalCandidates.cs" />
+    <Compile Remove="Models\Tasks.cs" />
+    <Compile Remove="Repository\EpicRepository.cs" />
+    <Compile Remove="Repository\GoalCandidatesRepository.cs" />
+    <Compile Remove="Repository\TaskRepository.cs" />
+    <Compile Remove="Views\Create.cshtml.cs" />
+    <Compile Remove="Views\Edit.cshtml.cs" />
+    <Compile Remove="Views\Index.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\Create.cshtml" />
+    <Content Remove="Views\Edit.cshtml" />
+    <Content Remove="Views\Index.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Dapper" Version="1.50.5" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.9" />
     <PackageReference Include="Npgsql" Version="4.0.3" />

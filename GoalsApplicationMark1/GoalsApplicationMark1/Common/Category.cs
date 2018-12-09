@@ -15,7 +15,7 @@ namespace GoalsApplicationMark1.Common
         Development, PMP, Testing, Leadership,
         BJJ, Budoshin, Aikido, KravMaga,
         Portuguese, Russian, Spanish, French, MakerOrDiy,
-        Marriage, Wife, Bella, Whisper,   
+        Marriage, Bella, Whisper,   
         Praying, Reading, Worshipping, Contemplating, Serving, Giving,   
         Sleep, Weight, Exercise, Nutrition, Mindfulness
     }

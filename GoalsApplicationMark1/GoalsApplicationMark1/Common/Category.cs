@@ -19,7 +19,12 @@ namespace GoalsApplicationMark1.Common
             Portuguese, Russian, Spanish, French, MakerOrDiy,
             Marriage, Bella, Whisper,
             Praying, Reading, Worshipping, Contemplating, Serving, Giving,
-            Sleep, Weight, Exercise, Nutrition, Mindfulness
+            Sleep, Weight, Exercise, Nutrition, Mindfulness, Scratch
+        }
+
+        public enum NanoCategory
+        {
+            None, CSharp, ASPNETCORE, Postgresql, MSTest, NUnit, XUnit, Html, Css, Bootstrap, JavaScript, Angular, TypeScript, Postman,
         }
     }   
 }

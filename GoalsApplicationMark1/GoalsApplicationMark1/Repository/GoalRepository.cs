@@ -31,8 +31,12 @@ namespace GoalsApplicationMark1.Repository
         {
             using (IDbConnection dbConnection = Connection)
             {
+                goal.CategoryString = goal.Category.ToString();
+                goal.SubCategoryString = goal.SubCategory.ToString();
+                goal.NanoCategoryString = goal.NanoCategory.ToString();
+                goal.GoalTypeString = goal.GoalType.ToString();
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO goals (goal, description, ranking, deliverabledate, isspecific, ismeasureable, isachieveable, isrelevant, istimebound, goaltype) VALUES (@goal, @description, @ranking, @deliverabledate, @isspecific, @ismeasureable, @isachieveable, @isrelevant, @istimebound, @goaltype)", goal);
+                dbConnection.Execute("INSERT INTO goals (goal, description, ranking, deliverabledate, isspecific, ismeasureable, isachieveable, isrelevant, istimebound, goaltype, category, subcategory, nanocategory) VALUES (@goal, @description, @ranking, @deliverabledate, @isspecific, @ismeasureable, @isachieveable, @isrelevant, @istimebound, @goaltypeString, @categoryString, @subcategoryString, @nanocategoryString)", goal);
             }
         }
         

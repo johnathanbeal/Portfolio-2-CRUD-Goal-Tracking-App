@@ -40,7 +40,7 @@ namespace GoalsApplicationMark1.Controllers
             var findErrors = ModelState.Values.SelectMany(v => v.Errors);
 
             if (ModelState.IsValid)
-            {
+            {               
                 _iGoalRepository.Add(goals);
                 return RedirectToAction("Index");
             }

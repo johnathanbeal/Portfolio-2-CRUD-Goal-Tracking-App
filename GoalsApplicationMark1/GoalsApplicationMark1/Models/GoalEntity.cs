@@ -47,10 +47,20 @@ namespace GoalsApplicationMark1.Models
 
         public EnumCategory Category { get; set; }
 
+        public string CategoryString { get; set; }
+
         public EnumSubCategory SubCategory { get; set; }
+
+        public string SubCategoryString { get; set; }
+
+        public NanoCategory NanoCategory { get; set; }
+
+        public string NanoCategoryString { get; set; }
 
         //public IEnumerable<GoalTypes> GoalTypes { get; set; }    
         
-        public string GoalType { get; set; }
+        public GoalTypes GoalType { get; set; }
+
+        public string GoalTypeString { get; set; }
     }
 }

@@ -85,7 +85,7 @@
         <div class="form-group">
             <label asp-for="Category" class="col-md-2 control-label">Goal Category</label>
             <div class="col-md-10">
-                <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category.EnumCategory>()"></select>               
+                <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category.EnumCategory>()"></select>
                 <span asp-validation-for="Category" class="text/danger" />
             </div>
         </div>
@@ -94,6 +94,13 @@
             <div class="col-md-10">
                 <select asp-for="SubCategory" asp-items="Html.GetEnumSelectList<Category.EnumSubCategory>()"></select>
                 <span asp-validation-for="SubCategory" class="text/danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp.net-for="Nanocategory" class="col-md-2 control-label">Sub Category</label>
+            <div class="col-md-10">
+                <select asp-for="NanoCategory" asp-items="Html.GetEnumSelectList<Category.NanoCategory>()"></select>
+                <span asp-validation-for="NanoCategory" class="text/danger" />
             </div>
         </div>
         <div class="form-group">

@@ -22,11 +22,15 @@
   <ItemGroup>
     <Compile Remove="Controllers\EpicController.cs" />
     <Compile Remove="Controllers\GoalCandidateController.cs" />
+    <Compile Remove="Controllers\GoalController.cs" />
     <Compile Remove="Controllers\TaskController.cs" />
+    <Compile Remove="Models\Epic.cs" />
     <Compile Remove="Models\Epics.cs" />
     <Compile Remove="Models\GoalCandidates.cs" />
+    <Compile Remove="Models\Goals.cs" />
     <Compile Remove="Models\Tasks.cs" />
     <Compile Remove="Repository\EpicRepository.cs" />
+    <Compile Remove="Repository\GoalCandidateRepository.cs" />
     <Compile Remove="Repository\GoalCandidatesRepository.cs" />
     <Compile Remove="Repository\TaskRepository.cs" />
     <Compile Remove="Views\Create.cshtml.cs" />

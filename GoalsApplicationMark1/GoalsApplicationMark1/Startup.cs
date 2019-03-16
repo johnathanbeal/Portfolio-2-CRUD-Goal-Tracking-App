@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GoalsApplicationMark1.Models;
+using GoalsApplicationMark1.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -23,6 +25,7 @@ namespace GoalsApplicationMark1
         {
             services.AddMvc();
             services.AddSingleton<IConfiguration>(Configuration);
+            services.AddScoped<IRepository<GoalEntity>, GoalRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

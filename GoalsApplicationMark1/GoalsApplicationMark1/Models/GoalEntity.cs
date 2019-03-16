@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using static GoalsApplicationMark1.Common.Category;
 
 namespace GoalsApplicationMark1.Models
 {
@@ -44,7 +45,12 @@ namespace GoalsApplicationMark1.Models
         [Required]
         public bool IsTimebound { get; set; }
 
-        public IEnumerable<GoalTypes> GoalType { get; set; }
+        public EnumCategory Category { get; set; }
+
+        public EnumSubCategory SubCategory { get; set; }
+
+        //public IEnumerable<GoalTypes> GoalTypes { get; set; }    
         
+        public string GoalType { get; set; }
     }
 }

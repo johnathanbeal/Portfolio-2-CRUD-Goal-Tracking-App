@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Controllers
 {
-    public class GoalsController : Controller
+    public class GoalsController : Controller, IGoalsController
     {
-        private readonly GoalRepository goalRepository;
+        private readonly IRepository<GoalEntity> _iGoalRepository;
 
         public GoalsController(IConfiguration configuration)
         {
-            goalRepository = new GoalRepository(configuration);
+            _iGoalRepository = new GoalRepository(configuration);
         }
 
         public IActionResult Index()
         {
-            return View(goalRepository.FindAll());
+            return View(_iGoalRepository.FindAll());
         }
 
         public IActionResult Create()
@@ -41,7 +41,7 @@ namespace GoalsApplicationMark1.Controllers
 
             if (ModelState.IsValid)
             {
-                goalRepository.Add(goals);
+                _iGoalRepository.Add(goals);
                 return RedirectToAction("Index");
             }
             return View(goals);
@@ -54,7 +54,7 @@ namespace GoalsApplicationMark1.Controllers
             {
                 return NotFound();
             }
-            GoalEntity obj = goalRepository.FindByID(id.Value);
+            GoalEntity obj = _iGoalRepository.FindByID(id.Value);
             if (obj == null)
             {
                 return NotFound();
@@ -68,7 +68,7 @@ namespace GoalsApplicationMark1.Controllers
         {
             if (ModelState.IsValid)
             {
-                goalRepository.Update(obj);
+                _iGoalRepository.Update(obj);
                 return RedirectToAction("Index");
             }
             return View(obj);
@@ -81,7 +81,7 @@ namespace GoalsApplicationMark1.Controllers
             {
                 return NotFound();
             }
-            goalRepository.Remove(id.Value);
+            _iGoalRepository.Remove(id.Value);
             return RedirectToAction("Index");
         }
     }

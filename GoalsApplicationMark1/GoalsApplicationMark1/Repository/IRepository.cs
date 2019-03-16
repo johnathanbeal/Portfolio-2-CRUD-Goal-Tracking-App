@@ -8,10 +8,10 @@ namespace GoalsApplicationMark1.Repository
 {
     public interface IRepository<T> where T : BaseEntity
     {
-        void Add(T goalTaskEpic);
+        void Add(T goal);
         void Remove(int id);
 
-        void Update(T goalTaskEpic);
+        void Update(T goal);
 
         T FindByID(int id);
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using System.Data;
 using Dapper;
-
+using GoalsApplicationMark1.Common;
 
 namespace GoalsApplicationMark1.Repository
 {
@@ -32,10 +32,10 @@ namespace GoalsApplicationMark1.Repository
             using (IDbConnection dbConnection = Connection)
             {
                 dbConnection.Open();
-                dbConnection.Execute("INSERT INTO goals (goal, description, ranking, deliverabledate, isspecific, ismeasureable, isachieveable, isrelevant, istimebound) VALUES (@goal, @description, @ranking, @deliverabledate, @isspecific, @ismeasureable, @isachieveable, @isrelevant, @istimebound)", goal);
+                dbConnection.Execute("INSERT INTO goals (goal, description, ranking, deliverabledate, isspecific, ismeasureable, isachieveable, isrelevant, istimebound, goaltype) VALUES (@goal, @description, @ranking, @deliverabledate, @isspecific, @ismeasureable, @isachieveable, @isrelevant, @istimebound, @goaltype)", goal);
             }
         }
-
+        
         public IEnumerable<GoalEntity> FindAll()
         {
             using (IDbConnection dbConnection = Connection)

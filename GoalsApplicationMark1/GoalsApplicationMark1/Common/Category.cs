@@ -5,18 +5,21 @@ using System.Threading.Tasks;
 
 namespace GoalsApplicationMark1.Common
 {
-    public enum EnumCategory
+    public class Category
     {
-         Professional, Jujitsu, Language, Hobby, Family, Faith, Health
-    }
+        public enum EnumCategory
+        {
+            Professional, Jujitsu, Language, Hobby, Family, Faith, Health
+        }
 
-    public enum EnumSubCategory 
-    {
-        Development, PMP, Testing, Leadership,
-        BJJ, Budoshin, Aikido, KravMaga,
-        Portuguese, Russian, Spanish, French, MakerOrDiy,
-        Marriage, Bella, Whisper,   
-        Praying, Reading, Worshipping, Contemplating, Serving, Giving,   
-        Sleep, Weight, Exercise, Nutrition, Mindfulness
-    }
+        public enum EnumSubCategory
+        {
+            Development, PMP, Testing, Leadership,
+            BJJ, Budoshin, Aikido, KravMaga,
+            Portuguese, Russian, Spanish, French, MakerOrDiy,
+            Marriage, Bella, Whisper,
+            Praying, Reading, Worshipping, Contemplating, Serving, Giving,
+            Sleep, Weight, Exercise, Nutrition, Mindfulness
+        }
+    }   
 }

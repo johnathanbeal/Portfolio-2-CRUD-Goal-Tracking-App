@@ -75,20 +75,25 @@
                 <span asp-validation-for="IsTimebound" class="text/danger" />
             </div>
         </div>
-        @*<div class="form-group">
-            <label asp-for="GoalType" class="col-md-2 control-label">Epic, Task, Goal, GoalCandidate</label>
+        <div class="form-group">
+            <label asp-for="GoalType" class="col-md-2 control-label">Goal Type</label>
             <div class="col-md-10">
-                <input asp-for="GoalType" class="form-control" />
+                <select asp-for="GoalType" asp-items="Html.GetEnumSelectList<GoalTypes>()"></select>
                 <span asp-validation-for="GoalType" class="text/danger" />
             </div>
-        </div>*@
+        </div>
         <div class="form-group">
-            <label asp-for="GoalType" class="col-md-2 control-label"></label>
+            <label asp-for="Category" class="col-md-2 control-label">Goal Category</label>
             <div class="col-md-10">
-                <select asp-for="GoalType" asp-items="Html.GetEnumSelectList<GoalTypes>()">
-                    <option selected="selected" value="">Please select</option>
-                </select>
-                <span asp-validation-for="GoalType" class="text-danger" />
+                <select asp-for="Category" asp-items="Html.GetEnumSelectList<Category.EnumCategory>()"></select>               
+                <span asp-validation-for="Category" class="text/danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp.net-for="Subcategory" class="col-md-2 control-label">Sub Category</label>
+            <div class="col-md-10">
+                <select asp-for="SubCategory" asp-items="Html.GetEnumSelectList<Category.EnumSubCategory>()"></select>
+                <span asp-validation-for="SubCategory" class="text/danger" />
             </div>
         </div>
         <div class="form-group">
